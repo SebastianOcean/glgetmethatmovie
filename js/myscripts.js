@@ -65,13 +65,12 @@ $(document).ready(function () {
 
 			$.each(sresults, function(i, movie) {
 
-				if (movie.poster_path===null){img_url='img/no_poster.png';}
-				else {img_url=img_base_url + 'w300' + movie.poster_path;}
-
-				search_result += '<li>';
+				search_result += '<li class="list_element">';
+				search_result += '<em class="movie_title">';
 				search_result += movie.original_title;
+				search_result += '</em>';
 				if (movie.release_date!==null && movie.release_date!=="") 
-					{search_result += '<span class="year_small"> (' + movie.release_date.substring(0, 4) + ')</span>';}
+					{search_result += '<span class="year"> (' + movie.release_date.substring(0, 4) + ')</span>';}
 				search_result += '</li>';
 				$results_container.html(search_result);
 
@@ -79,48 +78,83 @@ $(document).ready(function () {
 
 			$results_container.html(search_result);
 		} else {
-			$results_container.html('<li>No movie found for " ' + query + '".</li>');
+			$results_container.html('<li><small>No movie found for "' + query + '".</small></li>');
 		}
 	}
 
-	var build_extended_movie_list = function(query, sresults, total_results, pages){
-		show_thumbs = true;
-		if (total_results > 0) {
-						$('#wrapper').css({'top': '10px'});
-				var img_url;
-				var search_result = '<em>Here are your Movies:</em>';
+	var build_extended_movie_list = function(query, search_results, total_results, pages){
+		if (total_results > 0) {			
 
-				$.each(sresults, function(i, movie) {
-					if (movie.poster_path===null){img_url='img/no_poster.png';}
-					else {img_url=img_base_url + 'w300' + movie.poster_path;}
+			var img_url;
+			var s_r = ''; //will handle the html output
 
+			$.each(search_results, function(i, movie) {
 
-					search_result += '<p>';
-					if (show_thumbs) {
-						search_result += '<img src="' + img_url;
-						search_result += '" style="width:30px;"></img>';
-					}
-					search_result += movie.original_title;
-					if (movie.release_date!==null) 
-						{search_result += ' (' + movie.release_date.substring(0, 4) + ')';}
-					search_result += '</p>';
-					$results_container.html(search_result);
-				});
+				if (movie.poster_path!==null){img_url='img/no_poster.png';}
 
-				search_result += '<em>End of the results</em>';
+				s_r += '<li class="list_element">';
+					s_r += '<span class="movie_image_box">';
+						if (movie.poster_path!==null){
+							img_url = img_base_url + 'w300' + movie.poster_path;
+							s_r += '<img class="movie_image" src="' + img_url + '"></img>';}
+					s_r += '</span>';
+					s_r += '<em class="movie_title" style="max-width:none;">';
+						s_r += movie.original_title;
+					s_r += '</em>';
+					if (movie.release_date!==null && movie.release_date!=="") 
+						{s_r += '<span class="year"> (' + movie.release_date.substring(0, 4) + ')</span>';}
+					if (movie.overview!==null && movie.overview!=="") 
+						{s_r += '<p class="overview"> "' + movie.overview + '"</p>';}
+				s_r += '</li>';
 
-				$results_container.html(search_result);
-			} else {
-				$results_container.html('<em>No movie found for " ' + query + '". Please try again.</em>');
+				$results_container.html(s_r);
+
+			});
+
+			if(pages.number_of_pages > 1) {
+				s_r += '<span id="pages">';
+				var page_n = parseInt(pages.page_number)-1;
+				if(page_n > 0){
+					s_r += '<a href="#" id="prev_page">(prev ' + page_n + '/' + pages.number_of_pages + ')</a>';
+				}
+				var page_n = parseInt(pages.page_number)+1;
+				if(page_n < pages.number_of_pages){
+					s_r += '<a href="#" id="next_page">(next ' + page_n + '/' + pages.number_of_pages + ')</a>';
+				}
+				s_r += '<br/>Page ' + pages.page_number;				
+				s_r += '</span>';
 			}
+
+			$results_container.html(s_r);
+		} else {
+			$results_container.html('<li> <small>No movie found for "' + query + '".</small></li>');
+		}
 	}
 
 
 	function basic_list_transition(){
+		$('body').css({'overflow': 'hidden'});
 		$('#search_input').css({'border-bottom-left-radius': '0'});
 		$('#submit_button').css({'border-bottom-right-radius': '0'});
 		$('#results_display').css({'display': 'block'});
+
 		$('#wrapper').css({'top': '40%'});
+		$('#results_display').css({'width': '240px'});
+		$('#search_form').css({'width': '240px'});
+		$('#search_input').css({'width': '180px'});
+
+
+	}
+
+		
+	function extended_list_transition(){
+		$('body').css({'overflow': 'auto'});
+		$('#wrapper').css({'top': '10px'});
+		$('#results_display').css({'width': '400px'});
+		$('#search_form').css({'width': '400px'});
+		$('#search_input').css({'width': '300px'});
+
+
 	}
 
 
@@ -138,8 +172,14 @@ $(document).ready(function () {
 	$('#clear_bttn').click(function(e){
 		e.preventDefault();
 		$('#search_input').val('');
+		$('#results_display').html();
 		$('#search_input').focus();
 		$('#search_input').keyup();
+		basic_list_transition();
+		$('#search_input').css({'border-bottom-left-radius': '5px'});
+		$('#submit_button').css({'border-bottom-right-radius': '5px'});
+		$('#results_display').html('');
+	
 	});
 	
 	$('#search_input').keypress(function(e){
@@ -148,7 +188,7 @@ $(document).ready(function () {
 
 
 	//Listens to KEYUP event for the input typed, updating the quick search results
-	$('#search_input').keyup(function(e){		
+	$('#search_input').keyup(function(){		
 
 		search_query = $('#search_input').val();
 
@@ -160,7 +200,7 @@ $(document).ready(function () {
 			get_moviedb_result(search_query, build_basic_movie_list, pages);
 			
 		} else{
-			$('#results_display').html('<li>the results will be displayed here</li>');
+			$('#results_display').html('<li><small>the results will be displayed here</small></li>');
 		}
 	});
 
@@ -172,18 +212,73 @@ $(document).ready(function () {
 		$('#search_input').blur();
 
 		search_query = $('#search_input').val();
-		$results = $('#results_display'); // ???
-	if (search_query !== ''){
-		
-		pages.page_number = pages.number_of_pages = 1; 
 
-		get_moviedb_result(search_query, build_extended_movie_list, pages);
-		
-	} else{
-		$('#results_display').html('<li>the results will be displayed here</li>');
-	}
+		if (search_query !== ''){
+			
+			extended_list_transition();
+			pages.page_number = pages.number_of_pages = 1; 
+
+			get_moviedb_result(search_query, build_extended_movie_list, pages);
+			
+		} else{
+			$('#results_display').html('<li><small>the results will be displayed here</small></li>');
+		}
 	});
 
+
+	//Calls the next page when the button is clicked
+	$(document).on('click', '#next_page', function(e){	
+		e.preventDefault();
+
+		extended_list_transition();
+
+		++pages.page_number; 
+
+		window.scrollTo(0,0);
+
+		get_moviedb_result(search_query, build_extended_movie_list, pages);
+
+	});
+
+
+	//Calls the previous page when the button is clicked
+	$(document).on('click', '#prev_page', function(e){	
+		e.preventDefault();
+
+		extended_list_transition();
+
+		--pages.page_number; 
+
+		window.scrollTo(0,0);
+
+		get_moviedb_result(search_query, build_extended_movie_list, pages);
+
+	});
+
+	
+	//Search for the movie with selected title, when clicked by the user in the basic list
+	$(document).on('click', '.list_element', function(e){	
+
+		search_query = $(this).find('.movie_title').text();
+
+		$('#search_input').val(search_query);
+
+		extended_list_transition();
+
+		if (search_query !== ''){
+			
+			extended_list_transition();
+			pages.page_number = pages.number_of_pages = 1; 
+
+			get_moviedb_result(search_query, build_extended_movie_list, pages);
+			
+		} else{
+			$('#results_display').html('<li><small>the results will be displayed here</small></li>');
+		}
+
+	});
+	
+	
 
 });
 
