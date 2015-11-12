@@ -5,9 +5,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>GLGet me that movie</title>
-	<link href="css/components/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
-	<link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
-	<link href="css/mystyles.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href="styles/mystyles.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 
@@ -15,38 +15,35 @@
 
 			<form action="" id="search_form" style="">
 
-				<input type="text" name="search_input" id="search_input" required autofocus placeholder="Search for a movie..."></input>
-				<button type="button" form="" id="clear_bttn">X</button>
+				<input type="text" name="search_input" id="search_input" required autofocus autocomplete="off" placeholder="Search for a movie..."></input>
+
+				<button type="button" form="" id="clear_bttn">&#9747;</button>
+
 				<input type="submit" value="Submit" id="submit_button"/>
 
 			</form>
 
 			<ul id="results_display">
-				
+
+				<noscript>
+					<style type="text/css">
+						#search_input{border-bottom-left-radius:0;}
+						#submit_button{border-bottom-right-radius:0;}
+					</style>
+
+					<li><small>this webpage requires JavaScript</small></li>
+
+				</noscript>
+
 			</ul>
 
 
 	</section>
 	
-	<div id="blurred_bottom">.</div>
+	<hr id="blurred_bottom">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/components/jquery.min.js"></script>
 	<script src="js/myscripts.js"></script>
-	<script src="js/components/bootstrap.min.js"></script>
+
 </body>
 </html>
-
-
-<!-- 
-TODO
-
-translate in sass/compass
-
-clean code
-
-error request?
-
-get url parameter
-use it
-
- -->

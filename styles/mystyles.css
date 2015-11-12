@@ -1,0 +1,342 @@
+/* line 5, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 16, sass/mystyles.scss */
+body {
+  background-color: #2b2835;
+  color: white;
+  font-family: 'PT Sans Narrow', sans-serif, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+/* line 24, sass/mystyles.scss */
+a {
+  color: #e8ccaf;
+  text-decoration: none;
+  -moz-transition: color 0.3s ease-in;
+  -o-transition: color 0.3s ease-in;
+  -webkit-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+}
+/* line 29, sass/mystyles.scss */
+a:hover, a:active {
+  color: white;
+}
+
+/* line 34, sass/mystyles.scss */
+#wrapper {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+  -moz-transition: top 0.3s ease-in;
+  -o-transition: top 0.3s ease-in;
+  -webkit-transition: top 0.3s ease-in;
+  transition: top 0.3s ease-in;
+}
+
+/* line 42, sass/mystyles.scss */
+#search_form {
+  width: 240px;
+  height: 30px;
+  margin-bottom: 0px;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  text-align: left;
+  -moz-transition: width 0.3s ease-in;
+  -o-transition: width 0.3s ease-in;
+  -webkit-transition: width 0.3s ease-in;
+  transition: width 0.3s ease-in;
+  -moz-box-shadow: white 0 0 150px;
+  -webkit-box-shadow: white 0 0 150px;
+  box-shadow: white 0 0 150px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 53, sass/mystyles.scss */
+#search_input {
+  background-color: white;
+  color: #2b2835;
+  font-size: 0.95em;
+  font-family: 'PT Sans Narrow', sans-serif, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  padding: 3px 20px 3px 5px;
+  margin: 0;
+  width: 153px;
+  height: 22px;
+  border: 1px #595968 solid;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-box-shadow: #898279 0 0 5px inset;
+  -webkit-box-shadow: #898279 0 0 5px inset;
+  box-shadow: #898279 0 0 5px inset;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+/* line 68, sass/mystyles.scss */
+#search_input:focus {
+  outline: 0;
+}
+
+/* line 73, sass/mystyles.scss */
+#clear_bttn, #clear_bttn:active {
+  background-color: white;
+  margin: 0 2px 3px -23px;
+  padding: 0;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px #595968 solid;
+  width: 13px;
+  height: 13px;
+  line-height: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 9px;
+  color: #595968;
+  -moz-transition: background-color 0.3s ease-in, color 0.1s ease-in;
+  -o-transition: background-color 0.3s ease-in, color 0.1s ease-in;
+  -webkit-transition: background-color 0.3s ease-in, color 0.1s ease-in;
+  transition: background-color 0.3s ease-in, color 0.1s ease-in;
+}
+/* line 88, sass/mystyles.scss */
+#clear_bttn:hover, #clear_bttn:active:hover {
+  background-color: #595968;
+  color: white;
+  cursor: pointer;
+}
+
+/* line 95, sass/mystyles.scss */
+#submit_button {
+  background-color: #595968;
+  height: 100%;
+  padding: 5px;
+  float: right;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  color: white;
+  font-family: 'Lobster', cursive;
+  text-shadow: 0px 0px 1px #2b2835;
+  width: 25%;
+  border: 0px #595968 solid;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+}
+/* line 111, sass/mystyles.scss */
+#submit_button:hover {
+  text-shadow: 0px 0px 1px black;
+  color: #cccccc;
+  cursor: pointer;
+}
+
+/* line 118, sass/mystyles.scss */
+#results_display {
+  width: 240px;
+  text-align: left;
+  margin: 0 auto 50px auto;
+  padding: 0;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+/* line 126, sass/mystyles.scss */
+#results_display li {
+  text-shadow: 0px 0px 1px #2b2835;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 1px 15px 2px 15px;
+  list-style-type: none;
+  border: 1px #595968 solid;
+  border-top: 0;
+  overflow: auto;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+/* line 138, sass/mystyles.scss */
+.list_element:hover {
+  background-color: #595968;
+  cursor: pointer;
+}
+
+/* line 143, sass/mystyles.scss */
+.movie_title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  max-width: 163px;
+  font-weight: 600;
+  padding-right: 2px;
+  font-style: normal;
+  margin-top: 3px;
+}
+
+/* line 156, sass/mystyles.scss */
+.year {
+  margin: 3px 0 0 3px;
+  padding: 0;
+  float: right;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  font-size: 0.9em;
+}
+
+/* line 164, sass/mystyles.scss */
+.movie_image_box {
+  float: left;
+  margin: 4px 6px 4px -4px;
+  height: 75px;
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  overflow: hidden;
+  background-image: url("../img/no_poster.png");
+  background-size: 100% auto;
+}
+
+/* line 175, sass/mystyles.scss */
+.movie_image {
+  width: 100%;
+}
+
+/* line 179, sass/mystyles.scss */
+.overview {
+  overflow: hidden;
+  white-space: normal;
+  text-align: justify;
+  font-size: 0.9em;
+  font-style: italic;
+  margin: 2px 0 5px 5px;
+  padding-right: 2px;
+}
+
+/* line 189, sass/mystyles.scss */
+#pages {
+  font-size: 0.9em;
+  display: inline-block;
+  margin: 5px 0 60px 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 197, sass/mystyles.scss */
+#prev_page {
+  float: left;
+}
+
+/* line 201, sass/mystyles.scss */
+#next_page {
+  float: right;
+}
+
+/* line 205, sass/mystyles.scss */
+#blurred_bottom {
+  width: 100%;
+  position: fixed;
+  display: block;
+  margin: 0;
+  padding: 0;
+  bottom: -50px;
+  height: 50px;
+  border: 0;
+  z-index: 1999;
+  -moz-box-shadow: #2b2835 0px -35px 30px 10px;
+  -webkit-box-shadow: #2b2835 0px -35px 30px 10px;
+  box-shadow: #2b2835 0px -35px 30px 10px;
+}
