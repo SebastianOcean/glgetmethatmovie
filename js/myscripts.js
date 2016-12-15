@@ -29,7 +29,7 @@ $(document).ready(function () {
 		$results_container = $('#results_display');
 
 		//makes a single request to the API to get the base_url used to build the movie posters paths
-		$.getJSON('http://api.themoviedb.org/3/configuration', {
+		$.getJSON('https://api.themoviedb.org/3/configuration', {
 			'api_key' : api_key
 		}, function(data){
 			img_base_url = data.images.base_url;
@@ -43,7 +43,7 @@ $(document).ready(function () {
 	function get_moviedb_result(query, build_movie_list, pages){
 	//Function making the AJAX request to the movieDB API, finally builds the result using the function build_movie_list
 
-		var requestURL = 'http://api.themoviedb.org/3/search/movie';
+		var requestURL = 'https://api.themoviedb.org/3/search/movie';
 
 		// collect the data
 		$.getJSON(requestURL, {
