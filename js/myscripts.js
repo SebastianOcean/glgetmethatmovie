@@ -5,9 +5,10 @@ $(document).ready(function () {
   /////////////////////////// Declare general variables ///////////////////////////
 
 	var api_key,
-		img_base_url,		//the base url for the API's images
-		search_query,		//the current value of the search input 
-		$results_container,	//points to the html container where the results will be displayed 
+		img_base_url,		// the base url for the API's images
+		search_query,		// the current value of the search input
+		$results_container,	// points to the html container where the results will be displayed
+		xhr = null,			// keep track of the requests
 		pages = {
 			page_number : 1,
 			number_of_pages: 1
@@ -45,8 +46,14 @@ $(document).ready(function () {
 
 		var requestURL = 'https://api.themoviedb.org/3/search/movie';
 
+		// abort previous request
+		if (xhr != null) {
+			xhr.abort();
+			xhr = null;
+		}
+
 		// collect the data
-		$.getJSON(requestURL, {
+		xhr = $.getJSON(requestURL, {
 			'api_key'	: api_key,
 			'query' 	: query,
 			'page'		: pages.page_number
@@ -56,9 +63,12 @@ $(document).ready(function () {
 
 			//use the function passed as an argument to build de list
 			build_movie_list(query, data.results, data.total_results, pages);
-		}).error(function(){
-			basic_list_transition();
-			$results_container.html('<li><small>Error connecting to themoviedb\'s API</small></li>');
+		}).error(function(e, statusText){
+			// dislay error unless the request was only aborted
+			if (statusText !== "abort") {
+				basic_list_transition();
+				$results_container.html('<li><small>Error connecting to themoviedb\'s API</small></li>');
+			}
 		});
 	}
 
